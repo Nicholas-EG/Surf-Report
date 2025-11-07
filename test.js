@@ -1,4 +1,4 @@
-const API_URL = "https://api.weather.gov";
+const API_URL_ENDPOINT = "https://api.weather.gov/products/types/CWF/locations/SGX/latest";
 const HEADERS = [
     '.TODAY...',
     '.TONIGHT...',
@@ -40,9 +40,10 @@ function messageParser(text) {
 }
 
 let message;
-fetch(API_URL + "/products/types/CWF/locations/SGX/latest")
+fetch(API_URL_ENDPOINT)
     .then(response => response.json())
     .then(data => {
         message = data["productText"];
         console.log(messageParser(message));
+        // console.log(message);
     })
